@@ -11,7 +11,6 @@ H5P.Shape = (function ($) {
    *
    * @param {Object} params Behavior settings
    * @param {Number} id Content identification
-   * @returns {C} self
    */
   function C(params, id) {
     H5P.EventDispatcher.call(this);
@@ -101,14 +100,17 @@ H5P.Shape = (function ($) {
   C.prototype.createArrow = function () {
 
     let rotation = '';
-    let color = '';
+    let color = '#000';
     let returnShapeString = '';
 
-    // in case we only have one 'field' in the semantics, because then the colorSVG becomes a child of this.params.svg
-    if (typeof this.params.svg === 'string') {
-      color = this.params.svg;
-    } else {
-      color = this.params.svg.fillColor;
+    if (this.params.svg) {
+      // in case we only have one 'field' in the semantics, because then the colorSVG becomes a child of this.params.svg
+      if (typeof this.params.svg === 'string') {
+        color = this.params.svg;
+      } else {
+        console.log("params", this.params)
+        color = this.params.svg.fillColor;
+      }
     }
 
     const arrowHeadRight = 
