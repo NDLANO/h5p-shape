@@ -108,7 +108,6 @@ H5P.Shape = (function ($) {
       if (typeof this.params.svg === 'string') {
         color = this.params.svg;
       } else {
-        console.log("params", this.params)
         color = this.params.svg.fillColor;
       }
     }
